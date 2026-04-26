@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Commonplace Book — Sahil Mandalia. Fragments collected from markets, books, silence, and the road.">
+  <title>Commonplace Book — Sahil Mandalia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="masthead-eyebrow">
+        <span class="masthead-vol">Vol. I</span>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">◐</button>
+      </div>
+      <div class="masthead-rule"></div>
+      <h1 class="masthead-title">Commonplace<br>Book</h1>
+      <div class="masthead-rule"></div>
+      <p class="masthead-byline">Sahil Mandalia</p>
+      <p class="masthead-location">Dubai · Binghamton</p>
+      <p class="masthead-desc">Fragments collected from markets, books, silence, and the road.</p>
+    </div>
+  </header>
+
+  <!-- FILTER NAV -->
+  <nav class="filter-nav" id="filterNav" aria-label="Filter entries by category">
+    <div class="filter-nav-scroll">
+      <button class="filter-btn active" data-filter="all">All Entries</button>
+      <span class="filter-dot" aria-hidden="true">·</span>
+      <button class="filter-btn" data-filter="markets">Markets</button>
+      <span class="filter-dot" aria-hidden="true">·</span>
+      <button class="filter-btn" data-filter="philosophy">Philosophy</button>
+      <span class="filter-dot" aria-hidden="true">·</span>
+      <button class="filter-btn" data-filter="literature">Literature</button>
+      <span class="filter-dot" aria-hidden="true">·</span>
+      <button class="filter-btn" data-filter="fragrance">Fragrance</button>
+      <span class="filter-dot" aria-hidden="true">·</span>
+      <button class="filter-btn" data-filter="machines">Machines</button>
+      <span class="filter-dot" aria-hidden="true">·</span>
+      <button class="filter-btn" data-filter="geopolitics">Geopolitics</button>
+    </div>
+    <button class="random-btn" id="randomBtn" aria-label="Open a random entry">
+      <span class="random-text">Open to a page</span>
+      <span class="random-arrow" aria-hidden="true">→</span>
+    </button>
+  </nav>
+
+  <!-- FRAGMENTS -->
+  <main class="fragments" id="fragmentsGrid" aria-label="Commonplace entries">
+
+    <!-- 001 — Markets, wide -->
+    <article class="fragment fragment--wide" data-category="markets">
+      <div class="fragment-meta">
+        <span class="fragment-num">001</span>
+        <span class="fragment-cat">Markets</span>
+      </div>
+      <blockquote class="fragment-quote">
+        Most people think about what something is worth today. Second-level thinking asks: what do others think it's worth, and why are they wrong? The gap between those two questions is where every interesting investment lives.
+      </blockquote>
+      <p class="fragment-note">After rereading Howard Marks. The insight isn't about being contrarian — it's about the meta-layer. Price is an opinion about an opinion. Most investors forget there are two layers.</p>
+      <cite class="fragment-cite">Personal note, after <em>The Most Important Thing</em></cite>
+    </article>
+
+    <!-- 002 — Philosophy -->
+    <article class="fragment" data-category="philosophy">
+      <div class="fragment-meta">
+        <span class="fragment-num">002</span>
+        <span class="fragment-cat">Philosophy</span>
+      </div>
+      <blockquote class="fragment-quote">
+        When you call yourself an Indian or a Muslim or a Christian or a European, or anything else, you are being violent. Do you see why it is violent? Because you are separating yourself from the rest of mankind.
+      </blockquote>
+      <cite class="fragment-cite">Krishnamurti, <em>Freedom from the Known</em></cite>
+    </article>
+
+    <!-- 003 — Literature -->
+    <article class="fragment" data-category="literature">
+      <div class="fragment-meta">
+        <span class="fragment-num">003</span>
+        <span class="fragment-cat">Literature</span>
+      </div>
+      <blockquote class="fragment-quote">
+        Mine has been a life of much shame. I can't even guess myself what it must be to live the life of a human being.
+      </blockquote>
+      <p class="fragment-note">Finished this at 2am. The book isn't about alienation — it's about the exhaustion of performing normalcy for a world that doesn't know it's a performance.</p>
+      <cite class="fragment-cite">Dazai, <em>No Longer Human</em></cite>
+    </article>
+
+    <!-- 004 — Fragrance -->
+    <article class="fragment" data-category="fragrance">
+      <div class="fragment-meta">
+        <span class="fragment-num">004</span>
+        <span class="fragment-cat">Fragrance</span>
+      </div>
+      <p class="fragment-text">Jubilation XXV opens with a kind of ceremonial darkness — labdanum, oud, resins that smell like they've been burning in a room for centuries. It's not a fragrance you wear. It's a weight you carry. Some days that's exactly what you need.</p>
+      <cite class="fragment-cite">On Amouage Jubilation XXV</cite>
+    </article>
+
+    <!-- 005 — Machines -->
+    <article class="fragment" data-category="machines">
+      <div class="fragment-meta">
+        <span class="fragment-num">005</span>
+        <span class="fragment-cat">Machines</span>
+      </div>
+      <p class="fragment-text">The GT3 Touring removes the wing. That's the whole choice. Every other GT car announces its intentions — the Touring whispers them. Same logic as wearing something only a few people recognize as exceptional. The restraint is the statement.</p>
+      <cite class="fragment-cite">On the Porsche 911 GT3 Touring</cite>
+    </article>
+
+    <!-- 006 — Philosophy -->
+    <article class="fragment" data-category="philosophy">
+      <div class="fragment-meta">
+        <span class="fragment-num">006</span>
+        <span class="fragment-cat">Philosophy</span>
+      </div>
+      <blockquote class="fragment-quote">
+        Make the best use of what is in your power, and take the rest as it happens.
+      </blockquote>
+      <p class="fragment-note">The discipline of desire, properly understood, is not resignation — it is precision. Epictetus isn't asking you to stop caring. Only to care correctly.</p>
+      <cite class="fragment-cite">Epictetus, <em>Enchiridion</em> §1</cite>
+    </article>
+
+    <!-- 007 — Markets -->
+    <article class="fragment" data-category="markets">
+      <div class="fragment-meta">
+        <span class="fragment-num">007</span>
+        <span class="fragment-cat">Markets</span>
+      </div>
+      <p class="fragment-text">Precious metals have no earnings, no management, no moat — and that's precisely the point. Sometimes the most honest store of value is the one that makes no promises at all.</p>
+      <cite class="fragment-cite">On running a metals trading desk</cite>
+    </article>
+
+    <!-- 008 — Literature, wide -->
+    <article class="fragment fragment--wide" data-category="literature">
+      <div class="fragment-meta">
+        <span class="fragment-num">008</span>
+        <span class="fragment-cat">Literature</span>
+      </div>
+      <blockquote class="fragment-quote">
+        I laid my heart open to the gentle indifference of the universe. To feel it so like myself, indeed so brotherly, made me realize that I'd been happy, and that I was happy still.
+      </blockquote>
+      <p class="fragment-note">Meursault's peace, at the end. Not nihilism — something closer to release. He stopped performing and the world didn't punish him. The world was simply indifferent, and that indifference turned out to feel like grace.</p>
+      <cite class="fragment-cite">Camus, <em>The Stranger</em></cite>
+    </article>
+
+    <!-- 009 — Geopolitics -->
+    <article class="fragment" data-category="geopolitics">
+      <div class="fragment-meta">
+        <span class="fragment-num">009</span>
+        <span class="fragment-cat">Geopolitics</span>
+      </div>
+      <p class="fragment-text">Zeihan's core argument is demographic, not ideological: populations that aren't replacing themselves can't sustain the supply chains they built when they were young. The next twenty years aren't about who wins a trade war. They're about who can still find workers to fight one.</p>
+      <cite class="fragment-cite">After <em>The End of the World Is Just the Beginning</em></cite>
+    </article>
+
+    <!-- 010 — Philosophy / Spirituality -->
+    <article class="fragment" data-category="philosophy">
+      <div class="fragment-meta">
+        <span class="fragment-num">010</span>
+        <span class="fragment-cat">Philosophy</span>
+      </div>
+      <p class="fragment-text">The path of Sant Mat isn't about becoming something. It's about recognizing what was never absent. The current has always been there — you just hadn't learned to listen for the sound behind the sound.</p>
+      <cite class="fragment-cite">Personal reflection, pre-initiation</cite>
+    </article>
+
+    <!-- 011 — Fragrance -->
+    <article class="fragment" data-category="fragrance">
+      <div class="fragment-meta">
+        <span class="fragment-num">011</span>
+        <span class="fragment-cat">Fragrance</span>
+      </div>
+      <p class="fragment-text">The best oud is always slightly uncomfortable. That's not a flaw. Something this close to a living creature should retain some of its wildness. Perfumers who sand it smooth are missing the point entirely.</p>
+      <cite class="fragment-cite">Notes on resinous perfumery</cite>
+    </article>
+
+    <!-- 012 — Machines -->
+    <article class="fragment" data-category="machines">
+      <div class="fragment-meta">
+        <span class="fragment-num">012</span>
+        <span class="fragment-cat">Machines</span>
+      </div>
+      <p class="fragment-text">A naturally aspirated flat-six at 9,000 RPM is one of the few honest things left. No turbo lag means no delay between intention and response. You get exactly what you asked for — nothing added, nothing smoothed. The machine doesn't lie to you.</p>
+      <cite class="fragment-cite">On the Porsche 9A1 engine</cite>
+    </article>
+
+    <!-- 013 — Geopolitics, wide -->
+    <article class="fragment fragment--wide" data-category="geopolitics">
+      <div class="fragment-meta">
+        <span class="fragment-num">013</span>
+        <span class="fragment-cat">Geopolitics</span>
+      </div>
+      <p class="fragment-text">Pozsar's argument isn't really about gold or the dollar. It's about who controls the collateral. When the world was simple, Treasuries were collateral. In a fragmented world, commodities become collateral. Dubai understood this before most western analysts bothered to look east.</p>
+      <cite class="fragment-cite">Working notes, Q1 — after Zoltan Pozsar's <em>Bretton Woods III</em></cite>
+    </article>
+
+    <!-- 014 — Literature -->
+    <article class="fragment" data-category="literature">
+      <div class="fragment-meta">
+        <span class="fragment-num">014</span>
+        <span class="fragment-cat">Literature</span>
+      </div>
+      <blockquote class="fragment-quote">
+        The only way to get rid of a temptation is to yield to it. Resist it, and your soul grows sick with longing for the things it has forbidden to itself.
+      </blockquote>
+      <cite class="fragment-cite">Oscar Wilde, <em>The Picture of Dorian Gray</em></cite>
+    </article>
+
+    <!-- 015 — Literature -->
+    <article class="fragment" data-category="literature">
+      <div class="fragment-meta">
+        <span class="fragment-num">015</span>
+        <span class="fragment-cat">Literature</span>
+      </div>
+      <p class="fragment-text">There's a through-line from Dazai to Camus to Dostoevsky: the self as problem. The question isn't how to fix the self — it's whether the self asking the question is the right instrument for the inquiry.</p>
+      <cite class="fragment-cite">Personal note, working through the queue</cite>
+    </article>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <span class="footer-initials">S.M.</span>
+      <p class="footer-text">Dubai · Binghamton · <span id="currentYear"></span></p>
+      <p class="footer-tag">A notebook kept in public.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
