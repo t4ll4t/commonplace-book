@@ -1,0 +1,538 @@
+/* ============================================================
+   COMMONPLACE BOOK — Sahil Mandalia
+   Hand-written CSS. No frameworks.
+
+   Palette:
+     #f5f0e8  parchment (light bg)
+     #1a1410  warm black (dark bg / light text)
+     #c9a96e  antique gold (accent)
+     #7a6350  warm brown (muted text)
+     #ede8dc  card surface (light)
+   ============================================================ */
+
+/* ─── Custom Properties ────────────────────────────────── */
+
+:root {
+  --bg:           #f5f0e8;
+  --surface:      #ede8dc;
+  --text:         #1a1410;
+  --text-muted:   #7a6350;
+  --text-faint:   #a08d75;
+  --accent:       #c9a96e;
+  --accent-faint: rgba(201, 169, 110, 0.1);
+  --accent-glow:  rgba(201, 169, 110, 0.28);
+  --border:       #d6ccba;
+
+  --mast-bg:      #1c1510;
+  --mast-text:    #f0ebe0;
+  --mast-muted:   #7a6248;
+  --mast-accent:  #c9a96e;
+
+  --nav-h:        48px;
+  --max-w:        1040px;
+  --radius:       2px;
+}
+
+[data-theme="dark"] {
+  --bg:           #1a1410;
+  --surface:      #221c17;
+  --text:         #f0ebe0;
+  --text-muted:   #9a8260;
+  --text-faint:   #6a5440;
+  --border:       #3a2e24;
+  --accent-faint: rgba(201, 169, 110, 0.07);
+
+  --mast-bg:      #100d09;
+  --mast-muted:   #6a5440;
+}
+
+/* ─── Reset ────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  transition: background 0.4s ease, color 0.4s ease;
+  min-height: 100vh;
+}
+
+blockquote { margin: 0; }
+cite       { font-style: normal; }
+button     { cursor: pointer; font-family: inherit; }
+
+/* ─── Masthead ─────────────────────────────────────────── */
+
+.masthead {
+  background: var(--mast-bg);
+  color: var(--mast-text);
+  padding: 4rem 2rem 3.75rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Warm radial glow — like candlelight above */
+.masthead::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 90% 55% at 50% -5%,
+    rgba(201, 169, 110, 0.1) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+}
+
+/* Gold horizon line at the bottom edge */
+.masthead::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--accent) 50%, transparent 100%);
+}
+
+.masthead-inner {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.masthead-eyebrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.75rem;
+}
+
+.masthead-vol {
+  font-family: Georgia, serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--mast-accent);
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid rgba(201, 169, 110, 0.22);
+  color: var(--mast-accent);
+  font-size: 0.95rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(201, 169, 110, 0.1);
+  border-color: var(--mast-accent);
+}
+
+.masthead-rule {
+  width: 3rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  margin: 0 auto 1.625rem;
+}
+
+.masthead-title {
+  font-size: clamp(2.9rem, 8.5vw, 5.75rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--mast-text);
+  margin-bottom: 1.625rem;
+}
+
+.masthead-byline {
+  font-family: Georgia, serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--mast-accent);
+  margin-bottom: 0.3rem;
+}
+
+.masthead-location {
+  font-family: Georgia, serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mast-muted);
+  margin-bottom: 1.875rem;
+}
+
+.masthead-desc {
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--mast-muted);
+  line-height: 1.65;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+/* ─── Filter Nav ───────────────────────────────────────── */
+
+.filter-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0 1.5rem;
+  transition:
+    background 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.25s ease;
+}
+
+.filter-nav.is-shadowed {
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] .filter-nav.is-shadowed {
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+}
+
+.filter-nav-scroll {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  flex: 1;
+  min-width: 0;
+}
+
+.filter-nav-scroll::-webkit-scrollbar { display: none; }
+
+.filter-btn {
+  background: none;
+  border: none;
+  font-family: Georgia, serif;
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  padding: 0.45rem 0.65rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color 0.18s ease;
+  position: relative;
+}
+
+.filter-btn:hover {
+  color: var(--text-muted);
+}
+
+.filter-btn.active {
+  color: var(--accent);
+}
+
+/* Active underline — rides the nav bottom border */
+.filter-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0.65rem;
+  right: 0.65rem;
+  height: 1px;
+  background: var(--accent);
+}
+
+.filter-dot {
+  color: var(--border);
+  font-size: 0.75rem;
+  flex-shrink: 0;
+  user-select: none;
+  padding: 0 0.1rem;
+  transition: color 0.4s ease;
+}
+
+.random-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-family: Georgia, serif;
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  padding: 0.38rem 0.85rem;
+  border-radius: var(--radius);
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.random-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-faint);
+}
+
+.random-arrow {
+  display: inline-block;
+  transition: transform 0.18s ease;
+}
+
+.random-btn:hover .random-arrow {
+  transform: translateX(4px);
+}
+
+/* ─── Fragment Grid ────────────────────────────────────── */
+
+.fragments {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+  transition: opacity 0.18s ease;
+}
+
+/* ─── Fragment Card ────────────────────────────────────── */
+
+.fragment {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1.625rem 1.75rem 1.375rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  position: relative;
+  overflow: hidden;
+  scroll-margin-top: calc(var(--nav-h) + 24px);
+  transition:
+    background 0.4s ease,
+    border-color 0.4s ease;
+}
+
+/* Hover accent — thin gold line blooms from center */
+.fragment::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--accent) 50%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.fragment:hover::before {
+  opacity: 1;
+}
+
+.fragment--wide {
+  grid-column: 1 / -1;
+}
+
+.fragment.is-hidden {
+  display: none;
+}
+
+/* "Open to a page" glow animation */
+@keyframes goldShimmer {
+  0%   { box-shadow: 0 0 0 0 rgba(201, 169, 110, 0); border-color: var(--border); }
+  20%  { box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.2), 0 0 32px 0 rgba(201, 169, 110, 0.18); border-color: var(--accent); }
+  60%  { box-shadow: 0 0 0 2px rgba(201, 169, 110, 0.12), 0 0 20px 0 rgba(201, 169, 110, 0.1); border-color: var(--accent); }
+  100% { box-shadow: 0 0 0 0 rgba(201, 169, 110, 0); border-color: var(--border); }
+}
+
+.fragment.is-highlighted {
+  animation: goldShimmer 2s ease forwards;
+}
+
+/* ─── Fragment Typography ──────────────────────────────── */
+
+.fragment-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fragment-num {
+  font-family: Georgia, serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: var(--text-faint);
+  transition: color 0.4s ease;
+}
+
+.fragment-cat {
+  font-family: Georgia, serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid rgba(201, 169, 110, 0.22);
+  padding: 0.14rem 0.48rem;
+  border-radius: 1px;
+  transition: border-color 0.4s ease;
+}
+
+.fragment-quote {
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.82;
+  color: var(--text);
+  border-left: 2px solid var(--accent);
+  padding-left: 1.1rem;
+  transition: color 0.4s ease;
+}
+
+.fragment--wide .fragment-quote {
+  font-size: 1.14rem;
+  line-height: 1.78;
+}
+
+.fragment-text {
+  font-size: 0.95rem;
+  line-height: 1.88;
+  color: var(--text);
+  transition: color 0.4s ease;
+}
+
+.fragment-note {
+  font-size: 0.845rem;
+  font-style: italic;
+  line-height: 1.78;
+  color: var(--text-muted);
+  transition: color 0.4s ease;
+}
+
+/* Citation — always last, with separator */
+.fragment-cite {
+  font-family: Georgia, serif;
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+  display: block;
+  border-top: 1px solid var(--border);
+  padding-top: 0.75rem;
+  margin-top: auto;
+  transition: color 0.4s ease, border-color 0.4s ease;
+}
+
+.fragment-cite em {
+  font-style: italic;
+}
+
+/* ─── Empty State ──────────────────────────────────────── */
+
+.fragments-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+  font-style: italic;
+  color: var(--text-faint);
+  font-size: 0.9rem;
+}
+
+/* ─── Footer ───────────────────────────────────────────── */
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 2.75rem 1.5rem 3rem;
+  text-align: center;
+  transition: border-color 0.4s ease;
+}
+
+.footer-initials {
+  display: block;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--accent);
+  opacity: 0.55;
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.08em;
+}
+
+.footer-text {
+  font-family: Georgia, serif;
+  font-size: 0.66rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.4rem;
+  transition: color 0.4s ease;
+}
+
+.footer-tag {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--text-faint);
+  transition: color 0.4s ease;
+}
+
+/* ─── Responsive — Mobile ──────────────────────────────── */
+
+@media (max-width: 700px) {
+  .masthead {
+    padding: 3rem 1.25rem 3rem;
+  }
+
+  .fragments {
+    grid-template-columns: 1fr;
+    padding: 1.75rem 1rem 4rem;
+    gap: 1rem;
+  }
+
+  .fragment--wide {
+    grid-column: 1;
+  }
+
+  .fragment {
+    padding: 1.25rem 1.25rem 1.125rem;
+  }
+
+  .filter-nav {
+    padding: 0 1rem;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .random-text {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .masthead-title {
+    font-size: 2.75rem;
+  }
+}
